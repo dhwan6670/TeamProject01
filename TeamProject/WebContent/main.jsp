@@ -12,10 +12,11 @@
 	padding: 0;
 }
 
-#main-top {
-	position: relative;
-	margin-top: 50px;
-	margin-left: 100px;
+#notice_ticker {
+	width: 80%;
+  height: 50px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 #main-left {
@@ -99,6 +100,10 @@
 	width: 210px;
 	height: 300px;
 	border: 1px solid gray;
+}
+.best_table{
+	margin-left:auto;
+	margin-right:auto;
 }
 </style>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -197,11 +202,15 @@
       </div>
     </li>
   </ul>
+  <div class="btn">
+    <button type="button" id="prev"><</button>
+    <button type="button" id="next">></button>
+  </div>
 </section>
 	<%----------------------공지사항 시작-------------------- --%>
 	<ul id="notice_ticker">
 		<c:forEach var="tick" items="${nList}">
-			<li>[NOTICE]<a href="/TeamProject/nView?num=${tick.board_num}">${tick.board_title}</a>&nbsp;&nbsp;
+			<li>[NOTICE]<a href="/TeamProject/nView?num=${tick.board_num}">${tick.board_title}</a>&nbsp;&nbsp;|
 				${tick.board_id}[관리자]
 			</li>
 		</c:forEach>

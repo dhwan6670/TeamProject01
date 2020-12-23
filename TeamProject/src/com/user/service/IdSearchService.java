@@ -25,7 +25,7 @@ public class IdSearchService implements CommandAction{
 			request.setAttribute("ob", ob);
 			return "user/idsearchend.jsp";
 		}else {
-			return null;
+			return "user/searchId.jsp";
 		}
 	}
 

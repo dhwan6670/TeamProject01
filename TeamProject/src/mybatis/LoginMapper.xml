@@ -57,7 +57,8 @@
 	</select>
 	<select id = "pwdSearch" parameterType="LoginDTO" resultType="LoginDTO">
 		<![CDATA[
-			SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} AND MEMBER_NAME = #{member_name} AND MEMBER_PHONE = #{member_phone}
+			SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} AND MEMBER_NAME = #{member_name} AND MEMBER_PHONE = #{member_phone} 
+								AND MEMBER_HINT = #{member_hint} AND MEMBER_ANSWER = #{member_answer}
 		]]>
 	</select>
 </mapper>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../menu.jsp"%>
+<link href="../style.css" rel="stylesheet">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../menu.jsp"%>
 <style>
 * {
 	font-family: 'NeoDunggeunmo';
@@ -52,11 +54,21 @@ table {
 			document.searchpwd.phone.focus();
 			return;
 		}
-		document.searchid.submit();
+		if (document.searchpwd.hint.value == "") {
+			alert("비밀번호 힌트를 입력하세요");
+			document.searchpwd.hint.focus();
+			return;
+		}
+		if (document.searchpwd.answer.value == "") {
+			alert("비밀번호 답을 입력하세요");
+			document.searchpwd.answer.focus();
+			return;
+		}
+		document.searchpwd.submit();
 	}
 </script>
 
-<form name="searpwd" action="/TeamProject/searchpwd.do" method="post">
+<form name="searchpwd" action="/TeamProject/searchpwd.do" method="post">
 	<div id="wrap">
 	<br><br><b><font size="8" color="gray">비밀번호 찾기</font></b><br><br>
 		<table>
@@ -71,6 +83,14 @@ table {
 			<tr>
 				<td>전화번호</td>
 				<td><input type="text" name="phone"></td>
+			</tr>
+			<tr>
+				<td>비밀번호 힌트</td>
+				<td><input type="text" name="hint"></td>
+			</tr>
+			<tr>
+				<td>비밀번호 답</td>
+				<td><input type="text" name="answer"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"

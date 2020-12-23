@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../menu.jsp"%>
+<link href="../style.css" rel="stylesheet">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../menu.jsp"%>
 <style>
 * {
 	font-family: 'NeoDunggeunmo';
@@ -40,12 +42,12 @@ table {
 		if (document.searchid.name.value == "") {
 			alert("이름를 입력하세요");
 			document.searchid.name.focus();
-			return;
+			return false;
 		}
 		if (document.searchid.phone.value == "") {
 			alert("전화번호를 입력하세요");
 			document.searchid.phone.focus();
-			return;
+			return false;
 		}
 		document.searchid.submit();
 	}

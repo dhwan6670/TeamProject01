@@ -73,7 +73,7 @@ nav li a {
 		<header>
 			<div id="logo">
 				<img src="images/logo.png" alt="logo"
-					onClick="location.href='/TeamProject/home.jsp'" width="100px">
+					onClick="location.href='/TeamProject/home.jsp'" width="100px" style="cursor:pointer">
 			</div>
 
 			<br /> <br />

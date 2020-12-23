@@ -17,6 +17,8 @@ public class PwdSearchService implements CommandAction{
 		to.setMember_id(request.getParameter("id"));
 		to.setMember_name(request.getParameter("name"));
 		to.setMember_phone(request.getParameter("phone"));
+		to.setMember_hint(request.getParameter("hint"));
+		to.setMember_answer(request.getParameter("answer"));
 		
 		LoginDao dao = new LoginDao();
 		to = dao.pwdSearch(to);
@@ -26,7 +28,7 @@ public class PwdSearchService implements CommandAction{
 			request.setAttribute("to", to);
 		 return "user/pwdsearchend.jsp";
 		}else {
-			return null;
+			return "user/searchpwd.jsp";
 		}
 	}
 

@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link href="style.css" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@include file="../menu.jsp"%>
-<!DOCTYPE html>
-<html>
-<head>
+<%@ include file="../menu.jsp"%>
 <title>회원가입 화면</title>
 <style>
 * {
