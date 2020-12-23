@@ -126,6 +126,5 @@ function checkLogin(id,num,pg){
 		<td colspan="5" align="center"><img src="./free_image/chasing.gif" width=300px height=100px;></td>
 	</tr>
 </table>
-
 </body>
 </html>

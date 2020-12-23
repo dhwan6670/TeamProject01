@@ -9,14 +9,14 @@ public class EvaluateDTO {
 	private int eval_star;
 	private String eval_content;
 	private Date eval_date;
-	private int eval_avg;
+	private double eval_avg;
 	
 	public EvaluateDTO() {
 		super();
 	}
 
 	public EvaluateDTO(int eval_num, String eval_name, String eval_game, int eval_star, String eval_content,
-			Date eval_date, int eval_avg) {
+			Date eval_date, double eval_avg) {
 		super();
 		this.eval_num = eval_num;
 		this.eval_name = eval_name;
@@ -75,13 +75,12 @@ public class EvaluateDTO {
 		this.eval_date = eval_date;
 	}
 
-	public int getEval_avg() {
+	public double getEval_avg() {
 		return eval_avg;
 	}
 
-	public void setEval_avg(int eval_avg) {
+	public void setEval_avg(double eval_avg) {
 		this.eval_avg = eval_avg;
 	}
-	
 	
 }

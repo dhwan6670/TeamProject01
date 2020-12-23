@@ -198,14 +198,19 @@ function updateOpen(num){
 		<td><img src="./game_poster/maple.jpg"></td>
 	</tr>
 	<tr>
-		<td>평균 별점<br>
+		<td>평균 별점 <c:if test="${dto.eval_avg!=null}">: ${dto.eval_avg}</c:if><br>
 			<c:choose>
-				<c:when test="${dto.eval_avg<1.5}"><img src="./images/1.png" width=424px; height=72px;></c:when>
-				<c:when test="${dto.eval_avg<2.5}"><img src="./images/2.png" width=424px; height=72px;></c:when>
-				<c:when test="${dto.eval_avg<3.5}"><img src="./images/3.png" width=424px; height=72px;></c:when>
-				<c:when test="${dto.eval_avg<4.5}"><img src="./images/4.png" width=424px; height=72px;></c:when>
-				<c:when test="${dto.eval_avg eq 4.5}"><img src="./images/5.png" width=424px; height=72px;></c:when>
-				<c:when test="${dto.eval_avg>4.5}"><img src="./images/5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<0.75}"><img src="./images/0.5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<1.25}"><img src="./images/1.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<1.75}"><img src="./images/1.5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<2.25}"><img src="./images/2.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<2.75}"><img src="./images/2.5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<3.25}"><img src="./images/3.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<3.75}"><img src="./images/3.5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<4.25}"><img src="./images/4.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg<4.75}"><img src="./images/4.5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg eq 4.75}"><img src="./images/4.5.png" width=424px; height=72px;></c:when>
+				<c:when test="${dto.eval_avg>4.75}"><img src="./images/5.png" width=424px; height=72px;></c:when>
 				<c:otherwise><img src="./images/0.png" width=424px; height=72px;></c:otherwise>
 			</c:choose>
 		</td>
@@ -293,5 +298,6 @@ function updateOpen(num){
 		</table>
 	</c:forEach>
 </c:if>
+<%@include file="../footer.jsp"%>
 </body>
 </html>

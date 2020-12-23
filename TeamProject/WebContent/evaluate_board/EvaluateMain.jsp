@@ -93,6 +93,5 @@ function checkLogin(name,game){
     <td><button type="button" onclick="checkLogin('${entity.member_name}','ttt')"><img src="../game_poster/ttt.jpg" width=210px; height=300px;></button><br><span>철권 태그 토너먼트</span></td>
   </tr>
 </table>
-
 </body>
 </html>

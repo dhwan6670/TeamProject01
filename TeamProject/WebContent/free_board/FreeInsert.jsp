@@ -7,6 +7,6 @@
 <c:if test="${n>0}">
 	<c:redirect url="${url1}"/>
 </c:if>
-
+<%@include file="../footer.jsp"%>
 </body>
 </html>
