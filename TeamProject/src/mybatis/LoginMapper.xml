@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.LoginMapper">
+	<select id="getLoginUser" parameterType="LoginDTO"
+		resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_PASSWORD=#{member_password}
+		]]>
+	</select>
+	<insert id="registerUser" parameterType="LoginDTO">
+		<![CDATA[
+			INSERT INTO MEMBER
+			VALUES(#{member_id},#{member_password},#{member_name},#{member_address},
+				#{member_phone},#{member_email},1,#{member_hint},#{member_answer})
+		]]>
+	</insert>
+
+	<select id="getUserPage" parameterType="java.lang.String"
+		resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id}
+		]]>
+	</select>
+
+	<update id="userUpdate" parameterType="LoginDTO">
+		<![CDATA[
+			UPDATE MEMBER SET MEMBER_PASSWORD=#{member_password}, MEMBER_NAME=#{member_name},
+						MEMBER_ADDRESS=#{member_address}, MEMBER_PHONE=#{member_phone}, MEMBER_EMAIL=#{member_email},
+						MEMBER_HINT=#{member_hint}, MEMBER_ANSWER=#{member_answer}
+						WHERE MEMBER_ID=#{member_id}						
+		]]>
+	</update>
+
+	<delete id="userDelete" parameterType="LoginDTO">
+		<![CDATA[
+			DELETE MEMBER WHERE MEMBER_ID = #{member_id}
+		]]>
+	</delete>
+	
+	<select id="userIdCheck" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_ID=#{member_id}
+		]]>
+	</select>
+	<!-- 유저정보 가져오기 -->
+	<select id="userSearch" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_ID=#{member_id}
+		]]>
+	</select>
+	<select id = "idSearch" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_NAME = #{member_name} AND MEMBER_PHONE = #{member_phone}
+		]]>
+	</select>
+	<select id = "pwdSearch" parameterType="LoginDTO" resultType="LoginDTO">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_ID = #{member_id} AND MEMBER_NAME = #{member_name} AND MEMBER_PHONE = #{member_phone}
+		]]>
+	</select>
+</mapper>

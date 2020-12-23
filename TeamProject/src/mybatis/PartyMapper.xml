@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.partyMapper">
+	<insert id="insertParty" parameterType="Board">
+		<![CDATA[
+			INSERT INTO BOARD
+			VALUES
+			(BOARD_SEQ.NEXTVAL,#{board_id},#{board_name},'p',#{board_title},#{board_content},null,0,SYSDATE,0,0,0,0)
+		]]>
+	</insert>
+	<select id="partylist" parameterType="hashmap" resultType="Board">
+		<![CDATA[
+			SELECT * FROM (SELECT ROWNUM RN, AA.*
+			FROM (SELECT * FROM BOARD WHERE BOARD_CODE='p' ORDER BY BOARD_NUM DESC)AA)
+			WHERE RN>=#{startNum} AND RN<=#{endNum}
+		]]>
+	</select>
+	<update id="updateHit" parameterType="java.lang.Integer">
+		<![CDATA[
+			UPDATE BOARD SET BOARD_HIT=BOARD_HIT+1 WHERE BOARD_NUM=#{num}
+		]]>
+	</update>
+	<select id="viewParty" parameterType="java.lang.Integer" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD
+			WHERE BOARD_NUM=#{num}
+		]]>
+	</select>
+	<update id="updateParty" parameterType="Board">
+		<![CDATA[
+			UPDATE BOARD 
+			SET BOARD_TITLE=#{board_title}, BOARD_CONTENT=#{board_content}
+			WHERE BOARD_NUM=#{board_num}
+		]]>
+	</update>
+	<delete id="deleteParty" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE FROM BOARD
+			WHERE BOARD_NUM=#{board_num}			 
+		]]>
+	</delete>
+	<select id="partySearchList" parameterType="java.lang.String" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD
+			WHERE BOARD_CODE='p' AND BOARD_TITLE LIKE #{title}
+		]]>
+	</select>
+	<select id="partySearchContentList" parameterType="java.lang.String" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD
+			WHERE BOARD_CODE='p' AND BOARD_CONTENT LIKE #{title}
+		]]>
+	</select>
+	<select id="partySearchTitleContentList" parameterType="java.lang.String" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD
+			WHERE BOARD_CODE='p' AND BOARD_TITLE LIKE #{title} OR BOARD_CONTENT LIKE #{title}
+		]]>
+	</select>
+	<select id="partySearchIdList" parameterType="java.lang.String" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD
+			WHERE BOARD_CODE='p' AND BOARD_ID LIKE #{title}
+		]]>
+	</select>
+	<!-- 리플수 업데이트 -->
+	<update id="updatePartyReply" parameterType="PartyRef">
+		<![CDATA[
+			UPDATE BOARD 
+			SET BOARD_REPLY=BOARD_REPLY+1
+			WHERE BOARD_NUM=#{ref_pseq}
+		]]>
+	</update>
+	<!-- 댓글삭제시 리플수 1감소 -->
+	<update id="minusPartyReply" parameterType="java.lang.Integer">
+		<![CDATA[
+			UPDATE BOARD
+			SET BOARD_REPLY=BOARD_REPLY-1
+			WHERE BOARD_NUM=#{pseq}  
+		]]>
+	</update>
+<!-- ********************댓글관련 쿼리문 ********************-->
+	<insert id="insertPartyRef" parameterType="PartyRef">
+		<![CDATA[
+			INSERT INTO PARTY_REF
+			VALUES (PARTY_REF_SEQ.NEXTVAL,#{ref_id},#{ref_name},#{ref_content},sysdate,0,0,#{ref_pseq})
+		]]>
+	</insert>
+	<select id="partyRefList" resultType="PartyRef">
+		<![CDATA[
+			SELECT * FROM PARTY_REF WHERE REF_PSEQ=#{num}
+			ORDER BY REF_NUM
+		]]>
+	</select>
+	<delete id="deletePartyRef" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE FROM PARTY_REF
+			WHERE REF_NUM=#{num}
+		]]>
+	</delete>
+	<select id="searchPartyRef" parameterType="java.lang.Integer" resultType="PartyRef">
+		<![CDATA[
+			SELECT * FROM PARTY_REF
+			WHERE REF_NUM=#{num}
+		]]>
+	</select>
+	<update id="updatePartyRef" parameterType="Board">
+		<![CDATA[
+			UPDATE PARTY_REF SET REF_CONTENT=#{ref_content}
+			WHERE REF_NUM=#{ref_num}
+		]]>
+	</update>
+	<!-- 게시물삭제시 댓글정보도 삭제 -->
+	<delete id="PartyRefDel" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE FROM PARTY_REF
+			WHERE REF_PSEQ=#{num}
+		]]>
+	</delete>
+<!-- **********************추천관련 쿼리************************** -->
+	<select id="recCheck" parameterType="hashmap" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PARTY_REC
+			WHERE REC_NUM=#{no} AND REC_ID=#{id} 
+		]]>
+	</select>
+	<update id="recUpdate" parameterType="hashmap">
+		<![CDATA[
+			UPDATE BOARD
+			SET BOARD_REC=BOARD_REC+1
+			WHERE BOARD_NUM=#{no}
+		]]>
+	</update>
+	<insert id="recInsert" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO PARTY_REC
+			VALUES (#{no},#{id})
+		]]>
+	</insert>	
+	<delete id="recDelete" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM PARTY_REC
+			WHERE REC_NUM=#{no} AND REC_ID=#{id}
+		]]>
+	</delete>
+	<update id="recMinus" parameterType="hashmap">
+		<![CDATA[
+			UPDATE BOARD
+			SET BOARD_REC=BOARD_REC-1
+			WHERE BOARD_NUM=#{no}
+		]]>
+	</update>
+	<select id="recCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM PARTY_REC
+			WHERE REC_NUM=#{num}
+		]]>
+	</select>
+	<!-- 페이징관련 -->
+	<select id="partyPaging" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM BOARD
+		]]>
+	</select>
+	<!-- 게시글 삭제시 추천관련테이블정보도 같이 삭제 -->
+	<delete id="PartyRecDel" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE FROM PARTY_REC
+			WHERE REC_NUM=#{num}
+		]]>
+	</delete>
+</mapper>

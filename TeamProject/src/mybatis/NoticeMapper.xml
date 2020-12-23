@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.noticeMapper">
+	<select id="getNoticeList" resultType="Board">
+		SELECT * FROM BOARD
+		WHERE BOARD_CODE='n'
+		ORDER BY BOARD_NUM
+	</select>
+	<insert id="insertNotice" parameterType="Board">
+		<![CDATA[
+			INSERT INTO BOARD
+			VALUES
+			(BOARD_SEQ.NEXTVAL,#{board_id},#{board_name},#{board_code},#{board_title},#{board_content},null,0,SYSDATE,0,0,0,0)
+		]]>
+	</insert>
+	<select id="searchNotice" parameterType="java.lang.Integer" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD
+			WHERE BOARD_NUM=#{num} AND BOARD_CODE='n'
+		]]>
+	</select>
+	<update id="updateNotice" parameterType="Board">
+		<![CDATA[
+			UPDATE BOARD
+			SET BOARD_TITLE=#{board_title}, BOARD_CONTENT=#{board_content}
+			WHERE BOARD_NUM=#{board_num}
+		]]>
+	</update>
+	<update id="noticeHitUpdate" parameterType="java.lang.Integer">
+		<![CDATA[
+			UPDATE BOARD
+			SET BOARD_HIT=BOARD_HIT+1
+			WHERE BOARD_NUM=#{num}
+		]]>
+	</update>
+	<delete id="noticeDelete" parameterType="java.lang.Integer">
+		<![CDATA[
+			DELETE FROM BOARD
+			WHERE BOARD_NUM=#{num}
+		]]>
+	</delete>
+	<select id="getNoticeCount" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM BOARD
+			WHERE BOARD_CODE='n'
+		]]>
+	</select>
+</mapper>

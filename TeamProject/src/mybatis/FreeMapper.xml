@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.freeMapper">
+	<select id="getTotalArticle" resultType="java.lang.Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM BOARD WHERE BOARD_CODE='F'
+		]]>
+	</select>
+	<select id="getBoardList" parameterType="hashmap" resultType="Board">
+		<![CDATA[
+			SELECT BOARD_NUM,BOARD_TITLE,BOARD_CONTENT,BOARD_HIT,
+			BOARD_DATE, BOARD_ID
+         	FROM (SELECT ROWNUM RN, AA.*
+         	FROM (SELECT * FROM BOARD WHERE BOARD_CODE='F' ORDER BY BOARD_REF DESC, BOARD_STEP ASC)AA)
+         	WHERE RN>=#{startNum} AND RN<=#{endNum}
+		]]>
+	</select>
+	<insert id="boardInsert" parameterType="Board">
+		<![CDATA[
+			INSERT INTO BOARD
+			VALUES(BOARD_SEQ.NEXTVAL,#{board_id},#{board_name},
+			'F',#{board_title},#{board_content},NULL,0,SYSDATE,
+			0,0,0,0)
+		]]>
+	</insert>
+	<update id="updateHit" parameterType="int">
+		<![CDATA[
+			UPDATE BOARD SET BOARD_HIT=BOARD_HIT+1 WHERE BOARD_NUM=#{board_num}
+		]]>
+	</update>
+	<select id="getBoard" parameterType="java.lang.Integer" resultType="Board">
+		<![CDATA[
+			SELECT * FROM BOARD WHERE BOARD_NUM=#{board_num}
+		]]>
+	</select>
+	<update id="boardUpdate" parameterType="Board">
+      	<![CDATA[
+         	UPDATE BOARD SET BOARD_TITLE=#{board_title},BOARD_CONTENT=#{board_content} WHERE BOARD_NUM=#{board_num}
+      	]]>
+   	</update>
+   	<delete id="boardDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+         	DELETE BOARD WHERE BOARD_NUM=#{num}
+      	]]>
+   	</delete>
+</mapper>

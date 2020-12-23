@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="mybatis/config.propertis"/>
+	
+	<typeAliases>
+		<typeAlias type="com.login.dto.LoginDto" alias="LoginDTO"/>
+		<typeAlias type="board.dto.Board" alias="Board"/>
+		<typeAlias type="board.dto.PartyRef" alias="PartyRef"/>
+		<typeAlias type="board.dto.CommentDTO" alias="Comment"/>
+		<typeAlias type="board.dto.PicCommDTO" alias="PicComm"/>
+		<typeAlias type="board.dto.EvaluateDTO" alias="Evaluate"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" 	value="${driver}"/>
+				<property name="url" 		value="${url}"/>
+				<property name="username" 	value="${username}"/>
+				<property name="password" 	value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+		
+	<mappers>
+		<mapper resource="mybatis/LoginMapper.xml"/> 
+		<mapper resource="mybatis/PartyMapper.xml"/>
+		<mapper resource="mybatis/MainMapper.xml"/>
+		<mapper resource="mybatis/FreeMapper.xml"/>
+		<mapper resource="mybatis/CommentMapper.xml"/>
+		<mapper resource="mybatis/BoardMapper.xml"/>
+		<mapper resource="mybatis/PicMapper.xml"/>
+		<mapper resource="mybatis/NoticeMapper.xml"/>
+		<mapper resource="mybatis/EvalMapper.xml"/>
+	</mappers>
+	
+</configuration>

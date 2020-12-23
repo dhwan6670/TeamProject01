@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.commentMapper">
+	<insert id="commentInsert" parameterType="Comment">
+		<![CDATA[
+			INSERT INTO BOARD_COMMENT
+			VALUES(REPLY_NUM.NEXTVAL,#{comment_boardnum},#{comment_id},
+			SYSDATE,#{comment_parent},#{comment_content})
+		]]>
+	</insert>
+	<select id="getCommentList" parameterType="hashmap" resultType="Comment">
+		<![CDATA[
+			SELECT LEVEL AS COMMENT_LEVEL, COMMENT_NUM, COMMENT_BOARDNUM, COMMENT_ID, COMMENT_DATE,
+			COMMENT_PARENT, COMMENT_CONTENT FROM BOARD_COMMENT WHERE COMMENT_BOARDNUM=#{comment_boardnum}
+			START WITH COMMENT_PARENT=0 CONNECT BY PRIOR COMMENT_NUM=COMMENT_PARENT
+		]]>
+	</select>
+	<delete id="boardCommentDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+         	DELETE BOARD_COMMENT WHERE COMMENT_NUM=#{comment_num}
+      	]]>
+   	</delete>
+   	<select id="getComment" parameterType="java.lang.Integer" resultType="Comment">
+		<![CDATA[
+			SELECT * FROM BOARD_COMMENT WHERE COMMENT_NUM=#{comment_num}
+		]]>
+	</select>
+	<update id="commentUpdate" parameterType="Comment">
+      	<![CDATA[
+         	UPDATE BOARD_COMMENT SET COMMENT_CONTENT=#{comment_content},COMMENT_DATE=SYSDATE WHERE COMMENT_NUM=#{comment_num}
+      	]]>
+   	</update>
+</mapper>

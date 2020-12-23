@@ -1,0 +1,278 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'NeoDunggeunmo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/*********************메인게시판 시작**************************/
+.best_table {
+  position: relative;
+  text-align:center;
+  z-index: 0;
+  width: 400px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 1rem;
+}
+.best_table::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #399953;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#399953), to(#399953)), -webkit-gradient(linear, left top, left bottom, from(#fbb300), to(#fbb300)), -webkit-gradient(linear, left top, left bottom, from(#d53e33), to(#d53e33)), -webkit-gradient(linear, left top, left bottom, from(#377af5), to(#377af5));
+  background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+  -webkit-animation: rotate 4s linear infinite;
+          animation: rotate 4s linear infinite;
+}
+.best_table::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background: white;
+  border-radius: 5px;
+}
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+#notice_ticker {
+	width: 500px;
+	height: 40px;
+	overflow: hidden;
+	border: 1px solid #DDD;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #DDD;
+	height: 120px;
+}
+
+#notice_ticker li {
+	height: 30px;
+	border-bottom: 1px dotted #DDD;
+	padding: 5px;
+	margin: 0px 5px;
+}
+/*********************메인게시판 끝**************************/
+/*********************파티게시판 시작**************************/
+.party_btn{
+	background: linear-gradient( to right, #d9a7c7, #fffcdc );
+}
+
+.party_btn:hover {
+  -webkit-animation: jelly 0.5s;
+          animation: jelly 0.5s;
+}
+
+@-webkit-keyframes jelly {
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+            transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+            transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+            transform: scale(0.95, 1.05);
+  }
+}
+@keyframes jelly {
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+            transform: scale(0.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+            transform: scale(1.1, 0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+            transform: scale(0.95, 1.05);
+  }
+}
+.rec_button {
+  -webkit-animation: jittery 4s infinite;
+          animation: jittery 4s infinite;
+          width: 100%;
+          border-radius: 30px 30px 30px 30px /30px 30px 30px 30px;
+		height: 50px;
+		background: linear-gradient( to right, #ff6e7f, #bfe9ff );
+}
+@-webkit-keyframes jittery {
+  5%,
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  10% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  15% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  20% {
+    -webkit-transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.15) rotate(-5deg);
+  }
+  25% {
+    -webkit-transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15) rotate(5deg);
+  }
+  30% {
+    -webkit-transform: scale(1.15) rotate(-3deg);
+            transform: scale(1.15) rotate(-3deg);
+  }
+  35% {
+    -webkit-transform: scale(1.15) rotate(2deg);
+            transform: scale(1.15) rotate(2deg);
+  }
+  40% {
+    -webkit-transform: scale(1.15) rotate(0);
+            transform: scale(1.15) rotate(0);
+  }
+}
+
+@keyframes jittery {
+  5%,
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  10% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  15% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+  }
+  20% {
+    -webkit-transform: scale(1.15) rotate(-5deg);
+            transform: scale(1.15) rotate(-5deg);
+  }
+  25% {
+    -webkit-transform: scale(1.15) rotate(5deg);
+            transform: scale(1.15) rotate(5deg);
+  }
+  30% {
+    -webkit-transform: scale(1.15) rotate(-3deg);
+            transform: scale(1.15) rotate(-3deg);
+  }
+  35% {
+    -webkit-transform: scale(1.15) rotate(2deg);
+            transform: scale(1.15) rotate(2deg);
+  }
+  40% {
+    -webkit-transform: scale(1.15) rotate(0);
+            transform: scale(1.15) rotate(0);
+  }
+}
+.neons{
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+  	text-align: center;
+   	font-weight: bold;
+   	font-family:'NeoDunggeunmo';
+  	-webkit-animation: glow 2s ease-in-out infinite alternate;
+  	-moz-animation: glow 2s ease-in-out infinite alternate;
+  	animation: glow 2s ease-in-out infinite alternate;
+}
+.neons h1{
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+  	text-align: center;
+   	font-weight: bold;
+   	font-family:'NeoDunggeunmo';
+  	-webkit-animation: glow 2s ease-in-out infinite alternate;
+  	-moz-animation: glow 2s ease-in-out infinite alternate;
+  	animation: glow 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+     from {
+      color: #ffd700;
+    text-shadow: 0 0 5px #00008b, 0 0 10px #00008b, 0 0 15px #00008b, 0 0 20px #00008b, 0 0 25px #00008b, 0 0 30px #00008b, 0 0 35px #00008b, 0 0 40px #00008b;
+  }
+  to {
+     color: black;
+    text-shadow: 0 0 20px #00fff2, 0 0 30px #00fff2, 0 0 40px #00fff2, 0 0 50px #00fff2, 0 0 60px #00fff2, 0 0 70px #00fff2, 0 0 80px #00fff2, 0 1 90px #00fff2;
+  }
+}
+.tr1{
+		background-color: #e2e2e2;
+	}
+.party_a {
+	width: 600px;
+	font-family: 'NeoDunggeunmo',cursive;
+	font-size: 20px;
+}
+
+.party_b {
+	width: 290px;
+	font-family: 'NeoDunggeunmo',cursive;
+	font-size: 20px;
+}
+
+.party_c{
+	width: 600px;
+	height: 300px;
+	font-family: 'NeoDunggeunmo',cursive;
+	font-size: 20px;
+	resize: none;
+}
+.all::-webkit-scrollbar {
+    width: 10px;
+  }
+  .all::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  .all::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+  .view_textarea::-webkit-scrollbar {
+    width: 10px;
+  }
+  .view_textarea::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  .view_textarea::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+/*********************파티게시판 끝**************************/  

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="my.evalMapper">
+	<insert id="evalInsert" parameterType="Evaluate">
+		<![CDATA[
+			INSERT INTO EVALUATE
+			VALUES(EVAL_SEQ.NEXTVAL,#{eval_name},#{eval_game},
+			#{eval_star},#{eval_content},SYSDATE)
+		]]>
+	</insert>
+	<select id="getEvaluate" parameterType="hashmap" resultType="Evaluate">
+		<![CDATA[
+			SELECT * FROM EVALUATE WHERE EVAL_GAME=#{game} ORDER BY EVAL_NUM
+		]]>
+	</select>
+	<delete id="evalDelete" parameterType="java.lang.Integer">
+   		<![CDATA[
+         	DELETE EVALUATE WHERE EVAL_NUM=#{eval_num}
+      	]]>
+   	</delete>
+   	<select id="getInfo" parameterType="java.lang.String" resultType="Evaluate">
+		<![CDATA[
+			SELECT ROUND(AVG(EVAL_STAR),1) AS EVAL_AVG FROM EVALUATE WHERE EVAL_GAME=#{game}
+		]]>
+	</select>
+	<update id="evalUpdate" parameterType="Evaluate">
+      	<![CDATA[
+         	UPDATE EVALUATE SET EVAL_STAR=#{eval_star},EVAL_CONTENT=#{eval_content},EVAL_DATE=SYSDATE WHERE EVAL_NUM=#{eval_num}
+      	]]>
+   	</update>
+   	<select id="getComment" parameterType="java.lang.Integer" resultType="Evaluate">
+		<![CDATA[
+			SELECT * FROM EVALUATE WHERE EVAL_NUM=#{eval_num}
+		]]>
+	</select>
+</mapper>
