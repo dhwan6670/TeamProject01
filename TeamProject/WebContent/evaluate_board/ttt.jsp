@@ -191,6 +191,7 @@ function updateOpen(num){
 }
 </script>
 <br><br><br><br>
+<c:if test="${requestScope.same!=null}"><script>alert("한줄평은 되도록 한번씩만 써주세요!");<%request.removeAttribute("same");%></script></c:if>
 <c:set var="dto" value="${requestScope.dto}"/>
 <table class="pic">
 	<caption><h1>철권 태그 토너먼트</h1></caption>

@@ -86,3 +86,4 @@ eval_date date
 
 create sequence eval_seq increment by 1 start with 1 nocache nocycle;
 select * from evaluate;
+drop table evaluate;

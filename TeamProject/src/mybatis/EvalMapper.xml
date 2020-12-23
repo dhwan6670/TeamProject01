@@ -22,7 +22,12 @@
    	</delete>
    	<select id="getInfo" parameterType="java.lang.String" resultType="Evaluate">
 		<![CDATA[
-			SELECT ROUND(AVG(EVAL_STAR),1) AS EVAL_AVG FROM EVALUATE WHERE EVAL_GAME=#{game}
+			SELECT ROUND(AVG(EVAL_STAR),1) AS EVAL_AVG FROM EVALUATE WHERE EVAL_GAME=#{eval_game}
+		]]>
+	</select>
+	<select id="findUser" parameterType="Evaluate" resultType="java.lang.String">
+		<![CDATA[
+			SELECT EVAL_NAME FROM EVALUATE WHERE EVAL_GAME=#{eval_game} and EVAL_NAME=#{eval_name}
 		]]>
 	</select>
 	<update id="evalUpdate" parameterType="Evaluate">

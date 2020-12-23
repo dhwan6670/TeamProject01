@@ -202,10 +202,6 @@
       </div>
     </li>
   </ul>
-  <div class="btn">
-    <button type="button" id="prev"><</button>
-    <button type="button" id="next">></button>
-  </div>
 </section>
 	<%----------------------공지사항 시작-------------------- --%>
 	<ul id="notice_ticker">

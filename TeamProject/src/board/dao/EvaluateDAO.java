@@ -102,4 +102,14 @@ public class EvaluateDAO {
 			session.close();
 		}
 	}
+
+	public String findUser(EvaluateDTO dto) {
+		SqlSession session=factory.openSession();
+		String eval=session.selectOne("my.evalMapper.findUser",dto);
+		session.close();
+		return eval;
+	}
+
+	
+
 }
