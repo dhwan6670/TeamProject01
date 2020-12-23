@@ -197,15 +197,11 @@
       </div>
     </li>
   </ul>
-  <div class="btn">
-    <button type="button" id="prev"><</button>
-    <button type="button" id="next">></button>
-  </div>
 </section>
 	<%----------------------공지사항 시작-------------------- --%>
 	<ul id="notice_ticker">
 		<c:forEach var="tick" items="${nList}">
-			<li>[NOTICE]<a href="/TeamProject/nView?num=${tick.board_num}">${tick.board_title}</a>&nbsp;&nbsp;|
+			<li>[NOTICE]<a href="/TeamProject/nView?num=${tick.board_num}">${tick.board_title}</a>&nbsp;&nbsp;
 				${tick.board_id}[관리자]
 			</li>
 		</c:forEach>
